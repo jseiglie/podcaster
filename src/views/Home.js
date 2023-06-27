@@ -1,13 +1,27 @@
-import React, { useContext } from 'react'
-import { Context } from '../state/context'
+import React, { useContext, useEffect } from "react";
+import { Context } from "../state/context";
+import { PodcastListComponent } from "../components/PodcastList.component";
 
 export const Home = () => {
-    const {store, actions} = useContext(Context)
+  const { store, actions } = useContext(Context);
+
+  useEffect(() => {
+    actions.getLatestPodcast();
+  }, []);
+
+  const handleSearch = (e) => {};
+
   return (
-    <div>Home
-
-    {store.test}
-
-    </div>
-  )
-}
+    <article>
+      <div>
+        <span>
+          {JSON.parse(localStorage.getItem("latest"))
+            ? JSON.parse(localStorage.getItem("latest")).entry.length
+            : ""}
+        </span>
+        <input type="text" onChange={(e) => handleSearch(e)} />
+      </div>
+      <PodcastListComponent />
+    </article>
+  );
+};

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import getState from "./state";
+import getState from "./state.js";
 
 export const Context = React.createContext(null);
 
 const injectContext = (PassedComponent) => {
-  const StateWrapper = (props) => {
+  const StoreWrapper = (props) => {
     const [state, setState] = useState(
       getState({
         getStore: () => state.store,
@@ -16,16 +16,18 @@ const injectContext = (PassedComponent) => {
           }),
       })
     );
-    useEffect(()=>{
-            //first load
-    },[]);
+
+    useEffect(() => {
+      //state.actions.getLatestPodcast();
+    }, []);
+
     return (
-        <Context.Provider value={state}>
-            <PassedComponent {...props}/>
-        </Context.Provider>
-    )
+      <Context.Provider value={state}>
+        <PassedComponent {...props} />
+      </Context.Provider>
+    );
   };
-  return StateWrapper
+  return StoreWrapper;
 };
 
-export default injectContext
+export default injectContext;
