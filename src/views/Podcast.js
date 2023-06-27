@@ -7,14 +7,15 @@ import { PodcastDetailsComponent } from "../components/PodcastDetails.component"
 export const Podcast = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
+  //console.log(params.pod_id)
   useEffect(() => {
-    actions.getPodcastEpisodes(params.id);
+    actions.getPodcastEpisodes(params.pod_id);
   }, []);
   return (
     <article>
       {/* {console.log(store.episodes)} */}
       <PodcastDetailsComponent />
-      <PodcastEpisodes />
+      <PodcastEpisodes  pod_id={params.pod_id}/>
     </article>
   );
 };

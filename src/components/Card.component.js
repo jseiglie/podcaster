@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 export const CardComponent = (props) => {
-  console.log(props.obj.id.attributes["im:id"]);
+ // console.log(props.obj.id.attributes["im:id"]);
   //console.log(props.obj["im:image"]);
   const navigate = useNavigate()
   const handleClick = (e) => {

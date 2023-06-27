@@ -5,6 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       latest: null,
       episodes: null,
       podcastDetails: null,
+      episodeDetails: null,
     },
     actions: {
       getLatestPodcast: async () => {
@@ -35,16 +36,24 @@ const getState = ({ getStore, getActions, setStore }) => {
             setStore({ podcastDetails: JSON.parse(data.contents).results[0] })
           );
       },
+      setEpisodeDetails: (ep) => {
+        console.log(ep)
+        setStore({ episodeDetails: ep })
+        
+      },
       getFeed: async (rss) => {
-        console.log("RSS", rss)
-     
+        //console.log("RSS", rss);
+
         const resp = await fetch("https://jbpod.libsyn.com/applepodcast");
-        const {contents} = await resp.text();
-        console.log(await contents)
-        const feed = new window.DOMParser().parseFromString(contents, "text/xml")
-        console.log("FEED", feed)
+        const { contents } = await resp.text();
+       // console.log(await contents);
+        const feed = new window.DOMParser().parseFromString(
+          contents,
+          "text/xml"
+        );
+        //console.log("FEED", feed);
         const description = feed.querySelectorAll("item");
-        console.log("DESCRIPTION", description)
+        //console.log("DESCRIPTION", description);
       },
       duration: (millis) =>
         `${Math.floor((millis / (1000 * 60 * 60)) % 24)}:${Math.floor(

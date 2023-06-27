@@ -8,13 +8,13 @@ export const PodcastDetailsComponent = () => {
   const [rss, setRss ] = useState()
 
   useEffect(()=>{
-    actions.getPodcastDetails(params.id)
+    actions.getPodcastDetails(params.pod_id)
     store.podcastDetails && setRss(actions.getFeed(store.podcastDetails.feedUrl)) 
   },[])
   return (
     <article>
       {/* {console.log(store.podcastDetails)} */}
-      {console.log("ESTADO", rss)}
+      {/* {console.log("ESTADO", rss)} */}
       <img src={store.podcastDetails&&store.podcastDetails.artworkUrl600} alt=''/>
       <hr/>
       <h2>{store.podcastDetails&&store.podcastDetails.collectionName}</h2>
