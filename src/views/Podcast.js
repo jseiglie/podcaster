@@ -12,10 +12,14 @@ export const Podcast = () => {
     actions.getPodcastEpisodes(params.pod_id);
   }, []);
   return (
-    <article>
+    <article className="podcast--wrapper">
       {/* {console.log(store.episodes)} */}
-      <PodcastDetailsComponent />
-      <PodcastEpisodes  pod_id={params.pod_id}/>
+      <section className="col-40 d-flex justify-content-center">
+        <PodcastDetailsComponent />
+      </section>
+      <section className="col-60 d-flex justify-content-center">
+        <PodcastEpisodes pod_id={params.pod_id} />
+      </section>
     </article>
   );
 };

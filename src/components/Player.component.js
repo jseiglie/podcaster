@@ -5,12 +5,12 @@ export const PlayerComponent = (props) => {
   console.log("PLAYER", ep);
 
   return (
-    <article>
+    <article className="player--wrapper">
       <h2>{ep.trackName}</h2>
       <section>
         <p>{ep.description}</p>
       </section>
-      <section>
+      <section className="text-center my-4">
         <audio src={ep.episodeUrl} controls />
       </section>
     </article>

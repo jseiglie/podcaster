@@ -13,14 +13,14 @@ export const Home = () => {
 
   return (
     <article>
-      <div>
-        <span>
+       <section className="navbar">
+        <span className="counter">
           {JSON.parse(localStorage.getItem("latest"))
             ? JSON.parse(localStorage.getItem("latest")).entry.length
             : ""}
         </span>
-        <input type="text" onChange={(e) => handleSearch(e)} />
-      </div>
+        <input className="search" type="text" placeholder="Filter podcasts..." onChange={(e) => handleSearch(e)} />
+      </section>
       <PodcastListComponent />
     </article>
   );

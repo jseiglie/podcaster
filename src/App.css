@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f7f7f7;
 }
 
 code {
@@ -16,4 +17,209 @@ code {
 
 .App {
   text-align: center;
+ 
 }
+
+.header--wrapper{
+  border: none;
+  border-bottom: 1px solid gainsboro;
+  margin-bottom: 2rem;
+}
+
+.header__title{
+  text-align: start;
+  
+}
+
+.link{
+  text-decoration: none;
+  color:#3478b0;
+}
+
+
+.navbar{
+  text-align: end;
+  margin-right: 2rem;
+}
+
+.counter {
+  background-color: #3478b0;
+  border-radius: 25%;
+  padding: 0.1rem 0.3rem;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-size: 0.8rem;
+
+}
+
+.search{
+  margin-left: 0.5rem;
+  border: 1px solid gainsboro;
+  
+  border-radius: 5%;
+  padding: 0.5rem;
+
+}
+
+.podcastList--wrapper{
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card{
+  width: 25%;
+  font-size: 0.8rem;
+  margin: 5rem 1rem 2rem 1rem;
+  
+}
+
+.card__inner{
+ border: 1px solid gainsboro; 
+ box-shadow: 0px 3px 4px 1px gainsboro;
+ border-radius: 1%;
+
+}
+
+.card__img{
+  border-radius: 50%;
+  width: 50%;
+  height: auto;
+  position: relative;
+  margin-top: -2.8rem;
+  margin-bottom: 0.7rem;
+  box-shadow: 0px 0px 1px ;
+}
+
+.card__author{
+  margin: 0.5rem 0;
+}
+.card__title{
+  font-weight: 600;
+}
+.card__author{
+  color: #5d5d5d;
+  margin-bottom: 1.5rem;
+}
+
+.podcast--wrapper{
+  display: flex;
+  
+}
+.d-flex{
+  display: flex;
+  justify-content: center;
+}
+.col-40{
+  width: 40%;
+}
+.col-60{
+  width: 60%;
+}
+
+.justify-content-center{
+  justify-content: center;
+}
+
+.details--wrapper{
+  width: 60%;
+  height: 73vh;
+  border: 1px solid gainsboro;
+  padding: 1rem;
+  box-shadow: 0px 3px 4px 1px gainsboro;
+}
+
+.details__img{
+  width: 75%;
+  height: auto;
+  margin: 1rem auto;
+  
+}
+
+.details__title, .details__author, .details__description__text, .details_description{
+text-align: start;
+}
+
+.details__title{
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+}
+.details__author, .details__description__text{
+  font-style: italic;
+  margin: 0 0 1rem 0;
+}
+.details_description{
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.details__description__text{
+  margin: 0;
+}
+.w-100{
+  width: 100%;
+}
+
+.episodes--wrapper{
+  width: 100%;
+  padding: 0 2rem;
+  
+}
+
+.episodes__header{
+  text-align: start;
+  border: 1px solid gainsboro;
+  box-shadow: 0px 3px 4px 1px gainsboro;
+  padding: 0 1rem;
+  width: 90%;
+  margin-bottom: 2rem;
+  
+}
+
+table {
+  table-layout: auto;
+  width: 100%;
+}
+
+.table--wrapper{
+  height: 65vh;
+  overflow-y: auto;
+  width: 94%;
+  border: 1px solid gainsboro;
+  box-shadow: 0px 3px 4px 1px gainsboro;
+}
+
+tbody tr:nth-child(2n+1){background-color: #f2f2f2;}
+
+tbody tr:hover{
+  cursor: pointer;
+}
+
+tr{
+ margin: 1rem;
+}
+
+.text-start{
+  text-align: start;
+}
+.text-center {
+  text-align: center;
+}
+
+.my-4{
+  margin: 4rem 0;
+}
+
+.player--wrapper{
+  margin-right: 6rem;
+  border: 1px solid gainsboro;
+  padding: 1rem;
+  text-align: justify;
+  height: 60vh;
+  box-shadow: 0px 3px 4px 1px gainsboro;
+
+}
+

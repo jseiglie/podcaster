@@ -1,10 +1,11 @@
 import React from 'react'
 
+
 const Header = () => {
     
   return (
-    <header>
-    <h1>Podcaster</h1>
+    <header className='header--wrapper'>
+    <h1 className='header__title' ><a className='link' href='/'>Podcaster</a></h1>
    
   </header>
   )

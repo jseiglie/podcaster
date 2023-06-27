@@ -11,7 +11,7 @@ export const CardComponent = (props) => {
 
   return (
     <article className="card">
-      <figure>
+      <figure className="card__inner">
         <img
           id={`${props.obj.id.attributes["im:id"]}`}
           onClick={(e) => handleClick(e)}
@@ -20,12 +20,12 @@ export const CardComponent = (props) => {
           alt={props.obj["im:artist"].label}
         />
         <figcaption className="card__title">
-          {props.obj["im:artist"].label}
+          {props.obj["im:artist"].label.toUpperCase()}
         </figcaption>
-      </figure>
-      <span className="card__author">
+      <p className="card__author">
         Author: {props.obj["im:artist"].label}
-      </span>
+      </p>
+      </figure>
     </article>
   );
 };

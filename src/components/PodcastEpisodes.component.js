@@ -10,11 +10,14 @@ export const PodcastEpisodes = (props) => {
     navigate(`/podcast/${props.pod_id}/episode/${e.target.id}`);
   };
   return (
-    <article>
-      <section>
+    <article className="episodes--wrapper">
+      <section className="episodes__header">
         {console.log("episodes", store.episodes)}
         <h2>Episodes: {store.episodes && store.episodes.length}</h2>
       </section>
+      <section className="table--wrapper">
+
+      
       <table className="table">
         <thead>
           <tr>
@@ -29,7 +32,7 @@ export const PodcastEpisodes = (props) => {
           {store.episodes &&
             store.episodes.map((el, i) => (
               <tr key={i}>
-                <td id={el.trackId} onClick={(e) => handleSetEpisode(e, el)}>
+                <td className="text-start" id={el.trackId} onClick={(e) => handleSetEpisode(e, el)}>
                   {el.trackName}
                 </td>
                 <td>{actions.dateFormat(el.releaseDate)}</td>
@@ -38,6 +41,7 @@ export const PodcastEpisodes = (props) => {
             ))}
         </tbody>
       </table>
+      </section>
     </article>
   );
 };
