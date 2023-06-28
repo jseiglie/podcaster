@@ -11,8 +11,8 @@ export const PodcastListComponent = () => {
     <section className="podcastList--wrapper d-flex flex-column">
       <section className="navbar">
         <span className="counter">
-          {JSON.parse(localStorage.getItem("latest"))
-            ? JSON.parse(localStorage.getItem("latest")).entry.length
+          {localStorage.getItem("latest")
+            ? data.length
             : ""}
         </span>
         <input
