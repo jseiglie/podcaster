@@ -13,7 +13,9 @@ code {
     monospace;
 }
 
-
+.flex-column{
+  flex-direction: column;
+}
 
 .App {
   text-align: center;
@@ -61,7 +63,7 @@ code {
 
 }
 
-.podcastList--wrapper{
+.podcastList--wrapper, .podcast--holder{
   width: 80%;
   margin: 0 auto;
   display: flex;
@@ -69,10 +71,14 @@ code {
   justify-content: center;
 }
 
+.podcast--holder{
+  width: 100%;
+}
+
 .card{
   width: 25%;
   font-size: 0.8rem;
-  margin: 5rem 1rem 2rem 1rem;
+  margin: 5rem 0.5rem 2rem 0.5rem;
   
 }
 
