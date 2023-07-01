@@ -17,10 +17,6 @@ const injectContext = (PassedComponent) => {
       })
     );
 
-    useEffect(() => {
-      //state.actions.getLatestPodcast();
-    }, []);
-
     return (
       <Context.Provider value={state}>
         <PassedComponent {...props} />

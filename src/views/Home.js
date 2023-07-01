@@ -7,7 +7,7 @@ export const Home = () => {
 
   useEffect(() => {
     if (!actions.checkValidity("latest")) actions.getLatestPodcast();
-  },[]);
+  }, []);
 
   return (
     <article>

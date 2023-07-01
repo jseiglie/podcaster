@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../state/context";
 import { useNavigate } from "react-router-dom";
 
@@ -9,10 +9,13 @@ export const PodcastEpisodes = (props) => {
     actions.setEpisodeDetails(el);
     navigate(`/podcast/${props.pod_id}/episode/${e.target.id}`);
   };
+  useEffect(() => {
+    actions.notPlaying();
+  }, []);
+
   return (
     <article className="episodes--wrapper">
       <section className="episodes__header">
-        {/* {console.log("episodes", store.episodes)} */}
         <h2>Episodes: {store.episodes && store.episodes.length}</h2>
       </section>
       <section className="table--wrapper">
@@ -25,8 +28,6 @@ export const PodcastEpisodes = (props) => {
             </tr>
           </thead>
           <tbody>
-            {/* {console.log(store.episodes)} */}
-            {/*console.log(props.pod_id)} */}
             {store.episodes &&
               store.episodes.map((el, i) => (
                 <tr key={i}>

@@ -6,7 +6,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       episodes: null,
       podcastDetails: null,
       episodeDetails: null,
-      description: null
+      description: null,
+      playing: false
     },
     actions: {
       checkValidity: (item, pod_id = 0) => {
@@ -15,9 +16,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .split("/")
           .reverse()
           .join("/");
-        //checks for time of last fetch for latest podcasts
         if (item === "latest") {
-          //console.log(JSON.parse(localStorage.getItem("latest")));
           if (localStorage.getItem("latest")) {
             const result =
               new Date(
@@ -37,39 +36,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
         }
         //checks for time of last fetch of selected podcast episodes
-        if (item === "podcast") {
-          // console.log(pod_id);
-          // console.log(
-          //   "podcastDetails",
-          //   getStore().podcastDetails
-
-          //   //JSON.parse(localStorage.getItem("podcastDetails")).validity
-          // );
-
-          //   if (localStorage.getItem(getStore().podcastDetails)) {
-          //     const result =
-          //       new Date(
-          //         JSON.parse(localStorage.getItem("a")).validity
-          //       ).getTime() - new Date(now).getTime();
-          //   if (Math.round(result / (1000 * 60 * 60 * 24)) !== 0) {
-          //     //returns false if it has been more than 24 hours since last fetch and needs to fetch
-          //     return false;
-          //   }
-          //   //returns true if it doesn't needs to fetch new data
-          //   setStore({ latest: JSON.parse(localStorage.getItem("latest")) });
-          //   return true;
-          // }
-        }
         if (item === "episode") {
-          // console.log(
-          //   "-----------------------------------------------------------------",
-          //   getStore().episodes
-          // );
-          console.log(
-            JSON.parse(localStorage.getItem("podcastDetails"))
-            //JSON.parse(localStorage.getItem("podcastDetails")).validity
-          );
-
           if (localStorage.getItem("podcastDetails")) {
             const result =
               new Date(
@@ -90,7 +57,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           "https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json"
         );
         const data = await resp.json();
-
         setStore({ latest: await data.feed });
         localStorage.setItem(
           "latest",
@@ -103,6 +69,12 @@ const getState = ({ getStore, getActions, setStore }) => {
               .join("/"),
           })
         );
+      },
+      playing: () =>{
+        setStore({playing: true})
+      },
+      notPlaying: () =>{
+        setStore({playing: false})
       },
       getPodcastEpisodes: async (id) => {
         const resp = await fetch(
@@ -146,7 +118,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
       },
       setEpisodeDetails: (ep) => {
-       // console.log("-----------------ep ", ep);
         setStore({
           episodeDetails: {
             trackId: ep.trackId,
@@ -176,51 +147,16 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       getFeed: async (url) => {
         const corsProxy = "https://cors.eu.org/";
-        //console.log(getStore().episodes)
         fetch(corsProxy +  url)
           .then((res) =>
             res
               .text()
-              // .then((data) => console.info("data", data))
               .then((str) =>
                 new window.DOMParser().parseFromString(str, "text/xml")
               )
               .then((feed) => {
                 const items = feed.querySelectorAll("description");
                 setStore({description: items[0].childNodes[0].wholeText}) 
-                let html = ``;  
-                // items.forEach((el) => {
-                //  // console.log(el);
-                //   //console.log(el.querySelector("description"))
-                //   // html += `
-                //   //                                         <article>
-                //   //                                         <p>${
-                //   //                                           el.querySelector(
-                //   //                                             "title"
-                //   //                                           ).innerHTML
-                //   //                                         }</p>
-                //   //                                           <img src="${
-                //   //                                             el.querySelector(
-                //   //                                               "link"
-                //   //                                             ).innerHTML
-                //   //                                           }/image/large.png" alt="">
-                //   //                                           <h2>
-                //   //                                             <a href="${
-                //   //                                               el.querySelector(
-                //   //                                                 "link"
-                //   //                                               ).innerHTML
-                //   //                                             }" target="_blank" rel="noopener">
-                //   //                                               ${
-                //   //                                                 el.querySelector(
-                //   //                                                   "title"
-                //   //                                                 ).innerHTML
-                //   //                                               }
-                //   //                                             </a>
-                //   //                                           </h2>
-                //   //                                         </article>
-                //   //                                       `;
-                // });
-                //document.body.insertAdjacentHTML("beforeend", html);
               })
              
           )
