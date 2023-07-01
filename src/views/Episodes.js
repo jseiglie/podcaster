@@ -8,6 +8,10 @@ export const Episodes = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
 
+  useEffect(()=>{
+    actions.checkValidity("episode")
+  },[])
+
   return <article className="d-flex">
       <section className="col-40 d-flex justify-content-center">
     <PodcastDetailsComponent/>

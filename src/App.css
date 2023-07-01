@@ -162,6 +162,12 @@ text-align: start;
 
 .details__description__text{
   margin: 0;
+  height: 100px;
+  overflow-y: auto;
+}
+
+.details__description__text p {
+  margin: 0;
 }
 .w-100{
   width: 100%;

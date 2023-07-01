@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 export const PlayerComponent = (props) => {
-  const [ep] = useState(props.ep);
-  console.log("PLAYER", ep);
+  const [ep] = useState(props.ep.data);
+  //console.log("PLAYER", ep);
 
   return (
     <article className="player--wrapper">

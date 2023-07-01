@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../state/context";
 import { PodcastListComponent } from "../components/PodcastList.component";
 
 export const Home = () => {
-  const { store, actions } = useContext(Context);
+  const { actions } = useContext(Context);
 
   useEffect(() => {
-    if (!actions.checkValidity()) actions.getLatestPodcast();
-  }, []);
+    if (!actions.checkValidity("latest")) actions.getLatestPodcast();
+  },[]);
 
   return (
     <article>

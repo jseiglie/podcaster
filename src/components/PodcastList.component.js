@@ -3,17 +3,20 @@ import { Context } from "../state/context";
 import { CardComponent } from "./Card.component";
 
 export const PodcastListComponent = () => {
-  const { store, actions } = useContext(Context);
+  const { store } = useContext(Context);
+  // console.log("store latest on home", store.latest);
+  
+  // console.log(JSON.parse(localStorage.getItem("latest") ).data);
   const [search, setSearch] = useState("");
-  const [data] = useState(localStorage.getItem("latest") ? JSON.parse(localStorage.getItem("latest")).entry : []  )
-  const filterBy = (el) => (el["im:artist"].label).toLowerCase().includes(search.toLowerCase())
+  //const [data] = useState(store.latest ? store.latest : []);
+
+  const filterBy = (el) =>
+    el["im:artist"].label.toLowerCase().includes(search.toLowerCase());
   return (
     <section className="podcastList--wrapper d-flex flex-column">
       <section className="navbar">
         <span className="counter">
-          {localStorage.getItem("latest")
-            ? data.length
-            : ""}
+          {store.latest && store.latest.entry.length }
         </span>
         <input
           className="search"
@@ -23,11 +26,11 @@ export const PodcastListComponent = () => {
         />
       </section>
       <section className="d-flex podcast--holder">
-
-      {data && data.filter(el=>filterBy(el)).map((el, i) => (
-        <CardComponent key={i} obj={el} />
-        ))}
-        </section>
+        {store.latest &&
+          store.latest.entry
+            .filter((el) => filterBy(el))
+            .map((el, i) => <CardComponent key={i} obj={el} />)}
+      </section>
     </section>
   );
 };
