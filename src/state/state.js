@@ -27,7 +27,6 @@ const getState = ({ getStore, getActions, setStore }) => {
               return false;
             } else {
               //returns true if it doesn't needs to fetch new data
-              //console.log("setStorage validity check", JSON.parse(localStorage.getItem("latest")).data)
               setStore({
                 latest: JSON.parse(localStorage.getItem("latest")).data,
               });

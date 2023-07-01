@@ -7,7 +7,6 @@ export const Podcast = () => {
   const { actions } = useContext(Context);
   const params = useParams();
 
-  //console.log(params.pod_id)
   useEffect(() => {
     actions.checkValidity("podcast", params.pod_id);
     actions.getPodcastEpisodes(params.pod_id);
